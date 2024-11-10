@@ -114,4 +114,53 @@ input[type="datetime-local"] {
     font-size: 1.2em;
     margin-right: 10px;
 }
+/* Custom Notification Styling */
+.custom-notification {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 300px;
+    z-index: 1000;
+    animation: slide-in 0.5s ease forwards;
+}
+
+.notification-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.notification-close {
+    align-self: flex-end;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin: -10px -10px 10px 0;
+}
+
+.custom-notification h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.custom-notification p {
+    margin-top: 10px;
+}
+
+/* Animation for the notification */
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
 
