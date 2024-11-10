@@ -33,14 +33,31 @@ document.getElementById("reminderForm").addEventListener("submit", function (e) 
 function scheduleNotification(message, time) {
     const notificationTime = new Date(time).getTime() - new Date().getTime();
 
-    // Check if time is in the future, otherwise notify to set a future time
     if (notificationTime > 0) {
         setTimeout(() => {
-            new Notification("Reminder", { body: message });
+            showCustomNotification(message);
         }, notificationTime);
     } else {
         alert("The selected time is in the past. Please select a future time.");
     }
+}
+
+// Function to show custom notification
+function showCustomNotification(message) {
+    const notification = document.getElementById("customNotification");
+    const messageElement = document.getElementById("notificationMessage");
+
+    messageElement.textContent = message;
+    notification.style.display = "block";
+
+    // Automatically hide notification after 5 seconds
+    setTimeout(closeNotification, 5000);
+}
+
+// Function to close/hide custom notification
+function closeNotification() {
+    const notification = document.getElementById("customNotification");
+    notification.style.display = "none";
 }
 
 // Function to update the reminder list displayed on the page
