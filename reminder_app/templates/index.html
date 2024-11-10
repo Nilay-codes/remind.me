@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminder App</title>
+    <link rel="stylesheet" href="/static/style.css"> <!-- Link to CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Reminder App</h1>
+
+        <div class="form-container">
+            <h2>Set a Reminder</h2>
+            <form id="reminderForm">
+                <label>Message:</label>
+                <input type="text" id="message" required><br><br>
+                <label>Time:</label>
+                <input type="datetime-local" id="time" required><br><br>
+                <button type="submit" class="btn">Set Reminder</button>
+            </form>
+        </div>
+
+        <div class="schedule-container">
+            <h2>Scheduled Reminders</h2>
+            <table class="reminder-table">
+                <thead>
+                    <tr>
+                        <th>Message</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="reminderList">
+                    {% for reminder in reminders %}
+                    <tr>
+                        <td>{{ reminder['message'] }}</td>
+                        <td>{{ reminder['time'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
