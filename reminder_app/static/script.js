@@ -15,6 +15,7 @@ document.getElementById("reminderForm").addEventListener("submit", function (e) 
         updateReminderList();
     });
 
+    // Check for Notification permission
     if (Notification.permission !== "granted") {
         Notification.requestPermission().then(permission => {
             if (permission === "granted") {
@@ -28,8 +29,11 @@ document.getElementById("reminderForm").addEventListener("submit", function (e) 
     }
 });
 
+// Function to schedule the notification at the correct time
 function scheduleNotification(message, time) {
     const notificationTime = new Date(time).getTime() - new Date().getTime();
+
+    // Check if time is in the future, otherwise notify to set a future time
     if (notificationTime > 0) {
         setTimeout(() => {
             new Notification("Reminder", { body: message });
